@@ -2,3 +2,37 @@ extends ../layout
 
 block content
   h1 Registration Form
+
+   form(method="POST")
+    .form-group
+      label(for="usernameInput") Email
+      input.form-control#usernameInput(
+        name="username"
+        type="email"
+        placeholder="Enter email"
+        class=errors.username ? "is-invalid" : ""
+        value=user.username
+      )
+      if errors.username
+        #usernameInput.invalid-feedback= errors.username.message
+
+    .form-group
+      label(for="password") Password
+      input.form-control#password(
+        name="password"
+        type="password"
+        placeholder="Password"
+        class=errors.password ? "is-invalid" : ""
+      )
+      if errors.password
+        #password.invalid-feedback= errors.password.message
+
+    .form-group
+      label(for="confirmPassword") Password
+      input.form-control#confirmPassword(
+        name="confirmPassword"
+        type="password"
+        placeholder="Confirm Password"
+      )
+
+    button.btn.btn-primary(type="submit") Submit
